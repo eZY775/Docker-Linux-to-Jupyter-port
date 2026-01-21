@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  data-eng:
+    build:
+      context: .
+      args:
+        USERNAME: ${USERNAME}
+        USER_UID: ${USER_UID}
+        USER_GID: ${USER_GID}
+
+    container_name: data_eng_env
+    stdin_open: true
+    tty: true
+
+    ports:
+      - "8888:8888"
+
+    volumes:
+      - ./workspace:/home/${USERNAME}/workspace
+
+    working_dir: /home/${USERNAME}/workspace
